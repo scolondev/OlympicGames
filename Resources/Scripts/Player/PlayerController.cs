@@ -17,10 +17,13 @@ namespace OlympicGames.Player
 
         private Rigidbody2D rb;
         private LayerMask ground;
+        private Animator animator;
+
         public void Start()
         {
             rb = GetComponent<Rigidbody2D>();
             ground = LayerMask.GetMask("Ground");
+            animator = GetComponentInChildren<Animator>();
         }
 
         public void FixedUpdate()
@@ -46,6 +49,7 @@ namespace OlympicGames.Player
 
         public void Move(float input)
         {
+            if(input == -1) { transform.localScale = new Vector3(-1, 1, 1);  } else if (input == 1) { transform.localScale = new Vector3(1, 1, 1); }
             rb.AddForce(Vector2.right * input * moveSpeed, ForceMode2D.Force);
 
             //We don't want to be moving too fast.
@@ -54,12 +58,21 @@ namespace OlympicGames.Player
 
             //We don't want to decelerate when we are in the air.
             if (input == 0) { rb.velocity = new Vector2(rb.velocity.x * decelerationSpeed, rb.velocity.y); }
+
+            animator.SetFloat("XSpeed", Mathf.Abs(rb.velocity.x));
+            animator.SetFloat("YSpeed", Mathf.Abs(rb.velocity.y));
         }
 
         public void Jump()
         {
             if (IsTouchingGround())
                 rb.AddForce(jumpSpeed * Vector2.up, ForceMode2D.Impulse);
+                animator.SetBool("Jump", true);
+        }
+
+        public void JumpEnd()
+        {
+            animator.SetBool("Jump", false);
         }
 
         private bool IsTouchingGround()
