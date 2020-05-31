@@ -18,6 +18,8 @@ namespace OlympicGames.Player
         private Rigidbody2D rb;
         private LayerMask ground;
         private Animator animator;
+        private bool jumpedOffRight;
+        private bool jumpedOffLeft;
 
         public void Start()
         {
@@ -36,7 +38,7 @@ namespace OlympicGames.Player
             {
                 Jump();
             }
-
+          
             //Less floaty jumps - movement should be snappy
             if(rb.velocity.y < 0)
             {
@@ -65,9 +67,11 @@ namespace OlympicGames.Player
 
         public void Jump()
         {
-            if (IsTouchingGround())
+            if (IsTouchingGround()){
                 rb.AddForce(jumpSpeed * Vector2.up, ForceMode2D.Impulse);
                 animator.SetBool("Jump", true);
+                return;
+            }
         }
 
         public void JumpEnd()
@@ -79,5 +83,6 @@ namespace OlympicGames.Player
         {
             return Physics2D.Raycast(transform.position, Vector2.down, 1f, ground);
         }
+
     }
 }
