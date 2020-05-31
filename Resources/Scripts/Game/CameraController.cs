@@ -13,7 +13,9 @@ namespace OlympicGames.Game
         private Vector3 smoothedPosition;
         public void FixedUpdate()
         {
+            if (target == null) return;
             smoothedPosition = Vector3.Lerp(transform.position, target.position + offset, smoothSpeed * Time.fixedDeltaTime);
+            smoothedPosition.y = Mathf.Clamp(smoothedPosition.y, -5.5f, float.MaxValue);
         }
 
         public void LateUpdate()
