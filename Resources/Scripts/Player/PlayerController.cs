@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using OlympicGames.Audio;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -70,7 +71,7 @@ namespace OlympicGames.Player
             if (IsTouchingGround()){
                 rb.AddForce(jumpSpeed * Vector2.up, ForceMode2D.Impulse);
                 animator.SetBool("Jump", true);
-                return;
+                AudioManager.instance.PlaySound("player_jump");
             }
         }
 
