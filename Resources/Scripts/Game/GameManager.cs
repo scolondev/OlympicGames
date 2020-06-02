@@ -73,6 +73,20 @@ namespace OlympicGames.Game
             yield return new WaitForSeconds(1.5f);
             LoadScene(SceneManager.GetActiveScene().name);
         }
+
+        public void WinGame()
+        {
+            StartCoroutine(Win());
+        }
+
+        public IEnumerator Win()
+        {
+            hasGameStarted = false;
+            InterfaceManager.instance.WhiteFadeIn();
+            yield return new WaitForSeconds(1.5f);
+            Destroy(GameObject.FindGameObjectWithTag("Player"));
+            InterfaceManager.instance.DisplayStats();
+        }
         #region LevelManagement
         public void LoadScene(string scene)
         {

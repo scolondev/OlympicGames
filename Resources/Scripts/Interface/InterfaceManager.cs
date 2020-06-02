@@ -47,6 +47,16 @@ namespace OlympicGames.Interface {
         {
             transitionAnimator.Play("fadeout");
         }
+
+        public void WhiteFadeIn()
+        {
+            transitionAnimator.Play("whitefadein");
+        }
+
+        public void DisplayStats()
+        {
+
+        }
     }
 }
 
