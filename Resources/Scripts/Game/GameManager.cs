@@ -34,6 +34,7 @@ namespace OlympicGames.Game
         public bool hasGameStarted = false;
         public GameObject wall;
         private float timeStarted;
+        private float runTime;
         public void GrantPoints(int value)
         {
             score += value;
@@ -41,7 +42,8 @@ namespace OlympicGames.Game
 
         public void SetTime()
         {
-            InterfaceManager.instance.SetTime(Time.time - timeStarted);
+            runTime = Time.time - timeStarted;
+            InterfaceManager.instance.SetTime(runTime);
         }
 
         public void StartGame()
@@ -85,7 +87,7 @@ namespace OlympicGames.Game
             InterfaceManager.instance.WhiteFadeIn();
             yield return new WaitForSeconds(1.5f);
             Destroy(GameObject.FindGameObjectWithTag("Player"));
-            InterfaceManager.instance.DisplayStats();
+            InterfaceManager.instance.DisplayStats(runTime);
         }
         #region LevelManagement
         public void LoadScene(string scene)
