@@ -39,29 +39,35 @@ namespace OlympicGames.Interface {
             {
                 PlayerPrefs.SetString("TimeString", format);
                 PlayerPrefs.SetFloat("Time", secs);
+ 
             }
     
         }
 
         public void SetRank(float secs)
         {
-            if(secs < 100)
+            bool newRecord = PlayerPrefs.GetFloat("Time", 10000) > secs;
+            if (secs < 100)
             {
                 rank.text = "A \nYou won the Dungeonathlon!";
-                PlayerPrefs.SetString("Rank", "A");
+                if (newRecord)
+                    PlayerPrefs.SetString("Rank", "A");
             } else if (secs < 150)
             {
                 rank.text = "B \nYou came in second place!";
-                PlayerPrefs.SetString("Rank", "B");
+                if(newRecord)
+                    PlayerPrefs.SetString("Rank", "B");
             } else if (secs < 200)
             {
-                rank.text = "C \nYou came in third place!";
-                PlayerPrefs.SetString("Rank", "C");
+                rank.text = "C \nYou came in third place.";
+                if (newRecord)
+                    PlayerPrefs.SetString("Rank", "C");
             }
             else
             {
                 rank.text = "D \nAw shucks... better luck next time.";
-                PlayerPrefs.SetString("Rank", "D");
+                if (newRecord)
+                    PlayerPrefs.SetString("Rank", "D");
             }
         }
 
@@ -88,8 +94,8 @@ namespace OlympicGames.Interface {
 
         public void DisplayStats(float secs)
         {
-            SetFinalTime(secs);
             SetRank(secs);
+            SetFinalTime(secs);
             StartCoroutine(GameFinish());
         }
 

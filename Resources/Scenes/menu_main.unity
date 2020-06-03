@@ -215,6 +215,7 @@ GameObject:
   - component: {fileID: 403905093}
   - component: {fileID: 403905092}
   - component: {fileID: 403905094}
+  - component: {fileID: 403905095}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -267,6 +268,20 @@ MonoBehaviour:
   countAnimator: {fileID: 0}
   transitionAnimator: {fileID: 1984972324}
   button: {fileID: 0}
+--- !u!114 &403905095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403905091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22f5c74a66ee77a478a69734ccc196ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bestTime: {fileID: 733200686}
+  bestRank: {fileID: 465023055}
 --- !u!1 &465023053
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,10 +339,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 38b9f18bbd27acf4c8ba7c694ebe989d, type: 3}
-    m_FontSize: 72
+    m_FontSize: 64
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 7
+    m_MinSize: 6
     m_MaxSize: 72
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -735,10 +750,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 38b9f18bbd27acf4c8ba7c694ebe989d, type: 3}
-    m_FontSize: 72
+    m_FontSize: 64
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 7
+    m_MinSize: 6
     m_MaxSize: 72
     m_Alignment: 0
     m_AlignByGeometry: 0

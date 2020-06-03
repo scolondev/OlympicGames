@@ -25,6 +25,7 @@ namespace OlympicGames.Particle
                 trailSprite.sprite = sr.sprite;
                 trailSprite.flipX = sr.flipX;
                 trailObject.AddComponent<TrailFade>();
+                trailObject.transform.localScale = transform.parent.localScale;
                 yield return new WaitForSeconds(trailSpeed);
             }
         }

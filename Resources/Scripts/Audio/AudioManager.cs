@@ -29,6 +29,7 @@ namespace OlympicGames.Audio
             {
                 AudioClip newClip = (AudioClip)obj;
                 Audio audio = new Audio(this.gameObject.AddComponent<AudioSource>(), newClip, 1, 1);
+                if (newClip.name.Contains("theme")) { audio.source.loop = true; }
                 audios.Add(audio);
             }
         }
@@ -36,7 +37,10 @@ namespace OlympicGames.Audio
         public void PlaySound(string name)
         {
             Audio maudio = Array.Find(audios.ToArray(), audio => audio.source.clip.name == name);
-            maudio.source.Play();
+            if(maudio != null)
+            {
+                maudio.source.Play();
+            }
         }
     }
 }

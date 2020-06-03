@@ -1,4 +1,5 @@
-﻿using OlympicGames.Interface;
+﻿using OlympicGames.Audio;
+using OlympicGames.Interface;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -58,9 +59,12 @@ namespace OlympicGames.Game
             for(int i = waitTime; i > 0; i--)
             {
                 InterfaceManager.instance.SetCount(i);
+                AudioManager.instance.PlaySound("countdown");
                 yield return new WaitForSeconds(1);
             }
 
+            AudioManager.instance.PlaySound("go");
+            AudioManager.instance.PlaySound("theme_main");
             StartGame();
         }
 
@@ -83,6 +87,7 @@ namespace OlympicGames.Game
 
         public IEnumerator Win()
         {
+            AudioManager.instance.PlaySound("levelend");
             hasGameStarted = false;
             InterfaceManager.instance.WhiteFadeIn();
             yield return new WaitForSeconds(1.5f);

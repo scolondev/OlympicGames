@@ -10,6 +10,7 @@ namespace OlympicGames.Player
     public class Player : MonoBehaviour, IDamageable
     {
         public float hitpoints = 5;
+        public GameObject explosionEffect;
 
         private Animator animator;
         public void Start()
@@ -36,7 +37,7 @@ namespace OlympicGames.Player
         public void Death()
         {
             AudioManager.instance.PlaySound("player_death");
-            Debug.Log("Explosion!");
+            Instantiate(explosionEffect, transform.position, Quaternion.identity);
             GameManager.instance.Restart();
             Destroy(this.gameObject);
         }

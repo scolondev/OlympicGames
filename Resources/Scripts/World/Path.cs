@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using OlympicGames.Audio;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ namespace OlympicGames.World {
         public float timeOffset = 0;
         public float waitTime = 3;
         public float lerpTime = 1;
+        public string enableSound = "lava_spout";
 
         public void Start()
         {
@@ -41,6 +43,7 @@ namespace OlympicGames.World {
             while (true)
             {
                 yield return new WaitForSeconds(waitTime);
+                AudioManager.instance.PlaySound(enableSound);
                 currentDestination = points[point];
                 point++;
                 if(point >= points.Length) { point = 0; }
